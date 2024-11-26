@@ -197,7 +197,7 @@ When inputs exceeding 1450 bytes are processed, the FTP server enters an **unsta
    ftp> cd aaaaaaaaaa/bbbbbbbbbb/cccccccccc/dddddddddd/eeeeeeeeee/ffffffffff/gggggggggg/hhhhhhhhhh/iiiiiiiiii/jjjjjjjjjjjjjjjjjjjjjjjjj
    230 User user AAAAA...AAAA logged in. (What??)
    ```
-   - **Critical Flaw**: The server falsely reports the malformed user as authenticated (`230 User user AAAAA...AAAA logged in`), demonstrating state corruption.
+   - **Critical Flaw**: The server falsely reports the malformed user as "authenticated" (`230 User user AAAAA...AAAA logged in`), demonstrating state corruption.
 
 2. **Connection Termination Due to Signal 13 (Broken pipe)**:
    ```bash
