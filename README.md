@@ -4,7 +4,7 @@
 ## Overview
 I’ve been deep in the rabbit hole of digging into vulnerabilities in the TP-Link VN020-F3v(T) router. What started as a quick curiosity turned into uncovering way more flaws than I ever expected. This thing is packed with issues—firmware bugs, resource mismanagement, and memory handling problems everywhere.
 
-Today, I found a pretty wild memory corruption vulnerability in this router. It’s part of TP-Link’s custom firmware, built for ISPs but running on the same base firmware with tweaks for specific markets. This model is super common in North Africa—places like Tunisia, Algeria, and Morocco—and it’s still being actively sold.
+Today, I found a pretty wild memory corruption vulnerability in this router. It’s part of TP-Link’s custom firmware, built for ISPs but running on the same base firmware with tweaks for specific markets. This model is super common in countries like Tunisia, Algeria, and Morocco—and it’s still being actively sold.
 
 The vulnerability comes from how the router handles certain FTP payloads, and it’s a major security risk. It’s not just a random bug; it points to some deep design problems that could affect tons of users out there.
 
@@ -24,6 +24,7 @@ The vulnerability comes from how the router handles certain FTP payloads, and it
 **Affected Devices:**
 - Router Model: TP-Link VN020-F3v(T)
 - Firmware Version: TT_V6.2.1021
+- Hardware Version: 1.0
 - Deployment: Primarily through Tunisie Telecom and Topnet ISPs
 - Confirmed Variants: Also affects Algerian and Moroccan versions
 
