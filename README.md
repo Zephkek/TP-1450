@@ -14,7 +14,7 @@ Today I discovered an intricate and interesting memory corruption vulnerability 
 
 - **Type:** Buffer Overflow / Memory Corruption 
 - **Attack Vector:** FTP USER Command
-- **Impact:** Immediate Router Crash, Persistent Denial of Service effects, High potential for RCE
+- **Impact:** Immediate Router Crash, Mmemory corruption, Persistent effects post exploitation
 - **Authentication:** Not Required
 - **Complexity:** Low
 - **User Interaction:** None Required
