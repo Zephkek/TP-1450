@@ -2,7 +2,6 @@
 # Critical FTP Server Vulnerability in TP-Link VN020-F3v(T) Routers 
 
 ## Overview
-I’ve been deep in the rabbit hole of digging into vulnerabilities in the TP-Link VN020-F3v(T) router. What started as a quick curiosity turned into uncovering way more flaws than I ever expected. This thing is packed with issues—firmware bugs, resource mismanagement, and memory handling problems everywhere.
 
 Today, I found a pretty wild memory corruption vulnerability in this router. It’s part of TP-Link’s custom firmware, built for ISPs but running on the same base firmware with tweaks for specific markets. This model is super common in countries like Tunisia, Algeria, and Morocco—and it’s still being actively sold.
 
