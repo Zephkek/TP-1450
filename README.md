@@ -330,7 +330,7 @@ CVE Status: Pending
 ### Author
 **Mohamed Maatallah**
 - GitHub: [@Zephkek](https://github.com/Zephkek)
-- Affiliation: Independent Security Researcher
+- Affiliation: Student & Independent Security Researcher
 
 ---
 
