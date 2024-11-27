@@ -5,11 +5,10 @@
 
 A buffer overflow and memory corruption vulnerability was found in VN020-F3v(T) router. It’s part of TP-Link’s custom firmware, built for ISPs but running on the same base firmware with tweaks for specific markets. This model is super common in countries like Tunisia, Algeria, and Morocco—and it’s still being actively sold.
 
-The vulnerability comes from how the router handles certain FTP payloads, and it’s a major security risk. It’s not just a random bug; it points to some deep design problems that could affect tons of users out there.
-
+The vulnerability comes from how the router handles certain FTP payloads mainly, allowing an attacker to crash the router with a specially crafted payload or cause memory corruption and open doors for potential exploitation.
 ---
 
-## Deep Dive
+## Technical Analysis
 
 ### Vulnerability Details
 
