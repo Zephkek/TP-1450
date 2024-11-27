@@ -35,7 +35,7 @@ The vulnerability stems from **improper handling of user input** within TP-Link'
 - **>1450 'A's:** This results in **undefined behavior** without crashing.
 
 Indicating extremely weird behavior and that this goes beyond just a regular buffer overflow 
-## Packet Capture and Exploit Code Analysis
+## Packet Capture and Exploit Code Analysis (Wireshark Packet dissections)
 The interaction between a client and the TP-Link router's FTP server reveals the malicious payload that triggers the crash.
 
 ```plaintext
@@ -140,7 +140,7 @@ The vulnerability exhibits an interesting nuanced behavior when varying the payl
 ```
 ### Implementation Flaws in TP-Link Modifications
 
-Unlike the standard **GNU inetutils 1.4.1**, which gracefully handles oversized inputs, TP-Link's proprietary modifications introduce critical flaws:
+Unlike the standard **GNU inetutils 1.4.1**, which gracefully handles oversized inputs, VN020-F3v(T) FTP implemenation looks like have introduced many flaws:
 
 - **Improper Buffer Allocation**: Allocates insufficient memory for handling large `USER` inputs.
 - **Lack of Input Validation**: Fails to enforce maximum length constraints on the `USER` command.
@@ -198,7 +198,8 @@ When inputs exceeding 1450 bytes are processed, the FTP server enters an **unsta
    ftp> cd aaaaaaaaaa/bbbbbbbbbb/cccccccccc/dddddddddd/eeeeeeeeee/ffffffffff/gggggggggg/hhhhhhhhhh/iiiiiiiiii/jjjjjjjjjjjjjjjjjjjjjjjjj
    230 User user AAAAA...AAAA logged in. (What??)
    ```
-   - **Critical Flaw**: The server falsely reports the malformed user as "authenticated" (`230 User user AAAAA...AAAA logged in`), demonstrating state corruption.
+   - **Critical Flaw**: The server falsely reports the malformed user as "authenticated" (`230 User user AAAAA...AAAA logged in`), demonstrating state corruption, the user is not authenticated nor is it valid, so this message is indicating that there's something happening that's being induced 
+     by these commands specifically.
 
 2. **Connection Termination Due to Signal 13 (Broken pipe)**:
    ```bash
@@ -210,7 +211,8 @@ When inputs exceeding 1450 bytes are processed, the FTP server enters an **unsta
    ftp> cd aaaaaaaaaa/bbbbbbbbbb/cccccccccc/dddddddddd/eeeeeeeeee/ffffffffff/gggggggggg/hhhhhhhhhh/iiiiiiiiii/jjjjjjjjjjjjjjjjjjjjjjjjj
    ftp: lostpeer due to signal 13
    ```
-   - **Critical Flaw**: Signal 13 (broken pipe) indicates that the server abruptly terminates the connection, likely due to memory corruption or resource exhaustion caused by oversized inputs.
+   - Signal 13 (broken pipe) indicates that the server abruptly terminates the connection, likely due to memory corruption or resource exhaustion caused by oversized inputs this does not happen always and I've been able to reproduce it only a couple of times one of them where the server signal 13 is 
+     sent then the router crashes, i have managed to reproduce it a second time on video which is attached below.
 
 3. **Erratic Command Execution and Resource Leaks**:
    ```bash
@@ -226,7 +228,7 @@ When inputs exceeding 1450 bytes are processed, the FTP server enters an **unsta
    ftp> ls
    150 opening ASCII mode data connection for '/bin/ls'.
    ```
-   - **Critical Flaw**: The server fails to handle resources correctly, leading to persistent errors such as `Can't bind for data connection`.
+   - **Flaw**: The server fails to handle resources correctly, leading to persistent errors such as `Can't bind for data connection`, some commands error before executing have to execute them multiple times to get any result.
 
 4. **Partial Functionality Despite Corruption**:
    ```bash
@@ -237,7 +239,7 @@ When inputs exceeding 1450 bytes are processed, the FTP server enters an **unsta
    227 Entering Passive Mode (192,168,1,1,16,20).
    200 PORT command successful.
    ```
-   - **Critical Flaw**: Commands like `ls` succeed in certain conditions, indicating partial functionality in an otherwise corrupted state.
+   - **Notes**: Commands like `ls` succeed in certain conditions, indicating partial functionality in an otherwise corrupted state, usually when 
 
 ---
 
