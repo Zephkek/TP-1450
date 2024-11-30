@@ -240,7 +240,7 @@ When inputs exceeding 1450 bytes are processed, the FTP server enters an **unsta
    227 Entering Passive Mode (192,168,1,1,16,20).
    200 PORT command successful.
    ```
-   - **Notes**: Commands like `ls` succeed in certain conditions, indicating partial functionality in an otherwise corrupted state, usually when 
+   - **Notes**: Commands like `ls` succeed in certain conditions, indicating partial functionality in an otherwise corrupted state.
 
 ---
 
