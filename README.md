@@ -251,7 +251,7 @@ When inputs exceeding 1450 bytes are processed, the FTP server enters an **unsta
 - **Resource Mismanagement**: Persistent errors like `Can't bind for data connection` highlight severe flaws in cleanup routines.
 - **Protocol Violations**: The server fails to enforce proper state transitions or input validation.
 
-This instability represents a risk, with high potential for **denial of service (DoS)**, **privilege escalation**, and **remote code execution (RCE)**.
+This instability represents a risk, and can open doors to further exploitation. 
 
 ### Undefined FTP behavior video: 
 
