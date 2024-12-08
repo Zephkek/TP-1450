@@ -257,31 +257,6 @@ This instability represents a risk, and can open doors to further exploitation.
 
 https://github.com/user-attachments/assets/5cf62190-97b7-4316-a032-bc3627d3f862
 
-
-
-### Hypothesized Internal Mechanisms
-
-Based on the observed behaviors, the following internal mechanisms may be contributing to the vulnerability:
-
-1. **Fixed-Size Buffer with Insufficient Validation:**
-   - The FTP server likely allocates a fixed-size buffer (e.g., 1450 bytes) for processing the USER command.
-   - **Lack of Proper Length Checks:** The server does not adequately verify if the incoming username exceeds the buffer size, allowing for buffer overflows.
-
-2. **Buffer Overflow:**
-   - The USER command processing may involve stack-based buffers.
-    
-3. **Heap-Based Buffer Overflow:**
-   - Alternatively, if the server uses heap-allocated buffers without proper bounds checking, overflows could corrupt heap metadata, leading to erratic behavior or delayed crashes.
-
-4. **Thread Management Flaws:**
-   - The server might spawn separate threads for handling FTP commands.
-   - **Cross-Thread Memory Corruption:** Overflows in one thread could inadvertently affect the state of others, leading to resource leaks or deadlocks.
-
-5. **Delayed Resource Cleanup:**
-   - Partial overflows (1100 'A's) might corrupt flags or pointers used during resource cleanup, causing the server to crash after cleanup routines fail to execute properly.
-
-*Due to the propriatary nature of this firmware not all of these can be confirmed 100% but based on behavior of the router there's a strong possibility towards many of these factors*
-
 ---
 ### Mitigation Strategies
 
