@@ -16,7 +16,7 @@ The vulnerability comes from how the router handles certain FTP payloads mainly,
 - **Type:** Buffer Overflow / Memory Corruption 
 - **Attack Vector:** FTP USER Command
 - **Impact:** Immediate Router Crash, Mmemory corruption, Persistent effects post exploitation
-- **Authentication:** Not Required (for DOS), Single for Memory corruption
+- **Authentication:** Not Required (for BOF), Single for Memory corruption
 - **Complexity:** Low
 - **User Interaction:** None Required
 
