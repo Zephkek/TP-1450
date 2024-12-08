@@ -1,5 +1,5 @@
  
-# Critical FTP Server Vulnerability in TP-Link VN020-F3v(T) Routers 
+# Critical FTP Server Vulnerability in TP-Link VN020-F3v(T) Routers (CVE-2024-12344)
 
 ## Overview
 
@@ -321,7 +321,7 @@ Version: Firmware TT_V6.2.1021
 Discovery Date: 11/24/2024
 Reported to Vendor: 11/25/2024
 Reported to CNA: 11/26/2024
-CVE Status: Pending
+CVE Status: CVE-2024-12344
 
 ```
 
